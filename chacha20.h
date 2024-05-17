@@ -6,5 +6,6 @@ class ChaCha20 {
 
 	public:
 		ChaCha20(uint32_t *key, uint32_t *nonce);
-		void quarter_round(uint32_t *a, uint32_t *b, uint32_t *c, uint32_t *d);
+		uint32_t l_roll(uint32_t w, unsigned int b);
+		void quarter_round(uint32_t *state, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
 };
