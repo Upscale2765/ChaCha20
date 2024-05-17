@@ -20,8 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 uint32_t ChaCha20::e_flip(uint32_t w) {
     return (w << 24) |
-          ((w <<  8) & 0x00ff0000) |
-          ((w >>  8) & 0x0000ff00) |
+          ((w << 8) & 0x00ff0000) |
+          ((w >> 8) & 0x0000ff00) |
           ((w >> 24) & 0x000000ff);
 }
 
