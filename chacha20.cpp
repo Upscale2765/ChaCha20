@@ -38,3 +38,27 @@ ChaCha20::ChaCha20(uint32_t *key, uint32_t *nonce) {
         0x00000000, e_flip(nonce[0]), e_flip(nonce[1]), e_flip(nonce[2]), 
     };
 }
+
+void ChaCha20::get_stream(uint32_t *out, uint32_t ctr) {
+    for (int i = 0; i < 16; i++) {
+        out[i] = chacha_state[i];
+    }
+
+    out[12] = ctr;
+
+    for (int i = 0; i < 10; i++) {
+        quarter_round(out, 0, 4, 8, 12);
+        quarter_round(out, 1, 5, 9, 13);
+        quarter_round(out, 2, 6, 10, 14);
+        quarter_round(out, 3, 7, 11, 15);
+
+        quarter_round(out, 0, 5, 10, 15);
+        quarter_round(out, 1, 6, 11, 12);
+        quarter_round(out, 2, 7, 8, 13);
+        quarter_round(out, 3, 4, 9, 14);
+    }
+
+    for (int i = 0; i < 16; i++) {
+        out[i] += chacha_state[i];
+    }
+}

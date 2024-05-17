@@ -9,5 +9,5 @@ class ChaCha20 {
 
 	public:
 		ChaCha20(uint32_t *key, uint32_t *nonce);
-		void get_stream(uint32_t *out, unsigned int ctr);
+		void get_stream(uint32_t *out, uint32_t ctr);
 };
