@@ -6,6 +6,7 @@ class ChaCha20 {
 		uint32_t l_roll(uint32_t w, unsigned int b);
 		uint32_t e_flip(uint32_t w);
 		void quarter_round(uint32_t *state, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+		void get_stream(uint32_t *out);
 
 	public:
 		ChaCha20(uint32_t *key, uint32_t *nonce);
